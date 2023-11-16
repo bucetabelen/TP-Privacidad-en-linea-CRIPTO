@@ -1,0 +1,22 @@
+version: '3'
+services:
+  nginx-site1:
+    image: nginx
+    ports:
+      - "8081:80"
+    volumes:
+      - ./site_1:/usr/share/nginx/html
+
+  nginx-site2:
+    image: nginx
+    ports:
+      - "8082:80"
+    volumes:
+      - ./site_2:/usr/share/nginx/html
+  
+  ad-server:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./ad_server:/root/ad_server
